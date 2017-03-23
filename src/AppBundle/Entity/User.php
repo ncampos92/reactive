@@ -139,4 +139,80 @@ class User implements UserInterface, \Serializable
     {
         return $this->email;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->forms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->formAnswers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add form
+     *
+     * @param \AppBundle\Entity\form $form
+     *
+     * @return User
+     */
+    public function addForm(\AppBundle\Entity\form $form)
+    {
+        $this->forms[] = $form;
+
+        return $this;
+    }
+
+    /**
+     * Remove form
+     *
+     * @param \AppBundle\Entity\form $form
+     */
+    public function removeForm(\AppBundle\Entity\form $form)
+    {
+        $this->forms->removeElement($form);
+    }
+
+    /**
+     * Get forms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getForms()
+    {
+        return $this->forms;
+    }
+
+    /**
+     * Add formAnswer
+     *
+     * @param \AppBundle\Entity\formanswer $formAnswer
+     *
+     * @return User
+     */
+    public function addFormAnswer(\AppBundle\Entity\formanswer $formAnswer)
+    {
+        $this->formAnswers[] = $formAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Remove formAnswer
+     *
+     * @param \AppBundle\Entity\formanswer $formAnswer
+     */
+    public function removeFormAnswer(\AppBundle\Entity\formanswer $formAnswer)
+    {
+        $this->formAnswers->removeElement($formAnswer);
+    }
+
+    /**
+     * Get formAnswers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFormAnswers()
+    {
+        return $this->formAnswers;
+    }
 }
