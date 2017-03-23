@@ -36,6 +36,12 @@ class User implements UserInterface, \Serializable
      */
     private $email;
 
+    /**
+     * One user creates many forms
+     * @ORM\OneToMany(targetEntity="Form", mappedBy="createdBy")
+     */
+    private $forms;
+
     public function getUsername()
     {
         return $this->getEmail();
