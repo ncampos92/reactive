@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="forms")
+ * @ORM\Table(name="form")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FormRepository")
  */
 class Form
@@ -41,4 +41,10 @@ class Form
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $createdBy;
+
+    /**
+     * One form has many questions
+     * @ORM\OneToMany(targetEntity="question", mappedBy="form")
+     */
+    private $questions;
 }
