@@ -32,4 +32,10 @@ class FormAnswer
      * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
      */
     private $form;
+
+    /**
+     * One form answer has many question answers
+     * @ORM\OneToMany(targetEntity="questionanswer", mappedBy="formanswer")
+     */
+    private $questionAnswers;
 }

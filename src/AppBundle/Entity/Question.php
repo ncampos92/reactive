@@ -27,11 +27,16 @@ class Question
     private $text;
 
     /**
-     * @var integer
-     *
      * Many questions relate to one form
      * @ORM\ManyToOne(targetEntity="form", inversedBy="questions")
      * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
      */
     private $form;
+
+    /**
+     * One question has many answers
+     * @ORM\OneToMany(targetEntity="questionanswer", mappedBy="question")
+     */
+    private $questionAnswers;
+
 }
