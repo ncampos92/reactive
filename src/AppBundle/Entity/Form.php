@@ -47,4 +47,10 @@ class Form
      * @ORM\OneToMany(targetEntity="question", mappedBy="form")
      */
     private $questions;
+
+    /**
+     * One form has many form answers
+     * @ORM\OneToMany(targetEntity="formanswer", mappedBy="form")
+     */
+    private $formAnswers;
 }
