@@ -21,7 +21,7 @@ class QuestionAnswer
     /**
      * Many questions answers relate to one form answer
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="formanswer", inversedBy="questionAnswers")
+     * @ORM\ManyToOne(targetEntity="FormAnswer", inversedBy="questionAnswers")
      * @ORM\JoinColumn(name="form_answer_id", referencedColumnName="id")
      */
     private $formAnswer;

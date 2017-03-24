@@ -28,14 +28,14 @@ class Question
 
     /**
      * Many questions relate to one form
-     * @ORM\ManyToOne(targetEntity="form", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="Form", inversedBy="questions")
      * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
      */
     private $form;
 
     /**
      * One question has many answers
-     * @ORM\OneToMany(targetEntity="questionanswer", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="question")
      */
     private $questionAnswers;
 

@@ -21,21 +21,21 @@ class FormAnswer
 
     /**
      * Many form answers have one user
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="formAnswers")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="formAnswers")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
      * Many form answers have one form
-     * @ORM\ManyToOne(targetEntity="form", inversedBy="formAnswers")
+     * @ORM\ManyToOne(targetEntity="Form", inversedBy="formAnswers")
      * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
      */
     private $form;
 
     /**
      * One form answer has many question answers
-     * @ORM\OneToMany(targetEntity="questionanswer", mappedBy="formanswer")
+     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="formanswer")
      */
     private $questionAnswers;
     /**

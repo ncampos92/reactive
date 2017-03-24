@@ -37,20 +37,20 @@ class Form
      * @var integer
      *
      * Many forms are created by one user
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="forms")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="forms")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $createdBy;
 
     /**
      * One form has many questions
-     * @ORM\OneToMany(targetEntity="question", mappedBy="form")
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="form")
      */
     private $questions;
 
     /**
      * One form has many form answers
-     * @ORM\OneToMany(targetEntity="formanswer", mappedBy="form")
+     * @ORM\OneToMany(targetEntity="FormAnswer", mappedBy="form")
      */
     private $formAnswers;
     /**
