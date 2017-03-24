@@ -34,7 +34,7 @@ security:
                 password_parameter: _password
 
                 # Default redirection
-                default_target_path: /form
+                default_target_path: /appform
 
             # activate different ways to authenticate
 
