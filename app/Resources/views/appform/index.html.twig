@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Appforms list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appForm in appForms %}
+            <tr>
+                <td><a href="{{ path('appform_show', { 'id': appForm.id }) }}">{{ appForm.id }}</a></td>
+                <td>{{ appForm.title }}</td>
+                <td>{{ appForm.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('appform_show', { 'id': appForm.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appform_edit', { 'id': appForm.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appform_new') }}">Create a new appForm</a>
+        </li>
+    </ul>
+{% endblock %}
