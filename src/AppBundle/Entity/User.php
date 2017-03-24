@@ -38,9 +38,9 @@ class User implements UserInterface, \Serializable
 
     /**
      * One user creates many forms
-     * @ORM\OneToMany(targetEntity="Form", mappedBy="createdBy")
+     * @ORM\OneToMany(targetEntity="AppForm", mappedBy="createdBy")
      */
-    private $forms;
+    private $appForms;
 
     /**
      * One user has many form answers
@@ -214,5 +214,39 @@ class User implements UserInterface, \Serializable
     public function getFormAnswers()
     {
         return $this->formAnswers;
+    }
+
+    /**
+     * Add appForm
+     *
+     * @param \AppBundle\Entity\AppForm $appForm
+     *
+     * @return User
+     */
+    public function addAppForm(\AppBundle\Entity\AppForm $appForm)
+    {
+        $this->appForms[] = $appForm;
+
+        return $this;
+    }
+
+    /**
+     * Remove appForm
+     *
+     * @param \AppBundle\Entity\AppForm $appForm
+     */
+    public function removeAppForm(\AppBundle\Entity\AppForm $appForm)
+    {
+        $this->appForms->removeElement($appForm);
+    }
+
+    /**
+     * Get appForms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAppForms()
+    {
+        return $this->appForms;
     }
 }

@@ -48,12 +48,12 @@ class UserController extends Controller
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encoded);
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+            return $this->redirectToRoute('form_index');
         }
 
         return $this->render('user/new.html.twig', array(

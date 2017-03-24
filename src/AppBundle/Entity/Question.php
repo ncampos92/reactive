@@ -28,10 +28,10 @@ class Question
 
     /**
      * Many questions relate to one form
-     * @ORM\ManyToOne(targetEntity="Form", inversedBy="questions")
+     * @ORM\ManyToOne(targetEntity="AppForm", inversedBy="questions")
      * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
      */
-    private $form;
+    private $appForm;
 
     /**
      * One question has many answers
@@ -137,5 +137,29 @@ class Question
     public function getQuestionAnswers()
     {
         return $this->questionAnswers;
+    }
+
+    /**
+     * Set appForm
+     *
+     * @param \AppBundle\Entity\AppForm $appForm
+     *
+     * @return Question
+     */
+    public function setAppForm(\AppBundle\Entity\AppForm $appForm = null)
+    {
+        $this->appForm = $appForm;
+
+        return $this;
+    }
+
+    /**
+     * Get appForm
+     *
+     * @return \AppBundle\Entity\AppForm
+     */
+    public function getAppForm()
+    {
+        return $this->appForm;
     }
 }

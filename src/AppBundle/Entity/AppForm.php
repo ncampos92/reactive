@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="form")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FormRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AppFormRepository")
  */
-class Form
+class AppForm
 {
     /**
      * @var integer
@@ -34,23 +34,21 @@ class Form
     private $description;
 
     /**
-     * @var integer
-     *
      * Many forms are created by one user
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="forms")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="appForms")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $createdBy;
 
     /**
      * One form has many questions
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="form")
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="appForm")
      */
     private $questions;
 
     /**
      * One form has many form answers
-     * @ORM\OneToMany(targetEntity="FormAnswer", mappedBy="form")
+     * @ORM\OneToMany(targetEntity="FormAnswer", mappedBy="appForm")
      */
     private $formAnswers;
     /**

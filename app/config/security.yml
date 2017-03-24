@@ -33,6 +33,9 @@ security:
                 username_parameter: _email
                 password_parameter: _password
 
+                # Default redirection
+                default_target_path: /form
+
             # activate different ways to authenticate
 
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
