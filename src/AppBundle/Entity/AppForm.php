@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="form")
+ * @ORM\Table(name="appform")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AppFormRepository")
  */
 class AppForm

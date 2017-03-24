@@ -149,40 +149,6 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Add form
-     *
-     * @param \AppBundle\Entity\form $form
-     *
-     * @return User
-     */
-    public function addForm(\AppBundle\Entity\form $form)
-    {
-        $this->forms[] = $form;
-
-        return $this;
-    }
-
-    /**
-     * Remove form
-     *
-     * @param \AppBundle\Entity\form $form
-     */
-    public function removeForm(\AppBundle\Entity\form $form)
-    {
-        $this->forms->removeElement($form);
-    }
-
-    /**
-     * Get forms
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getForms()
-    {
-        return $this->forms;
-    }
-
-    /**
      * Add formAnswer
      *
      * @param \AppBundle\Entity\formanswer $formAnswer

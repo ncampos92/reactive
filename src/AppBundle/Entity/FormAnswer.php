@@ -29,13 +29,13 @@ class FormAnswer
     /**
      * Many form answers have one form
      * @ORM\ManyToOne(targetEntity="AppForm", inversedBy="formAnswers")
-     * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="appform_id", referencedColumnName="id")
      */
     private $appForm;
 
     /**
      * One form answer has many question answers
-     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="formanswer")
+     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="formAnswer")
      */
     private $questionAnswers;
     /**
@@ -78,30 +78,6 @@ class FormAnswer
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set form
-     *
-     * @param \AppBundle\Entity\form $form
-     *
-     * @return FormAnswer
-     */
-    public function setForm(\AppBundle\Entity\form $form = null)
-    {
-        $this->form = $form;
-
-        return $this;
-    }
-
-    /**
-     * Get form
-     *
-     * @return \AppBundle\Entity\form
-     */
-    public function getForm()
-    {
-        return $this->form;
     }
 
     /**
