@@ -35,6 +35,9 @@ security:
 
                 # Default redirection
                 default_target_path: /appform
+            logout:
+                path:   /logout
+                target: /
 
             # activate different ways to authenticate
 

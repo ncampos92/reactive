@@ -2,12 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Reactive{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
     <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Reactive</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted("ROLE_USER") %}
+                        <li><a href="{{ path('user_show', { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesión</a></li>
+                    {% else %}
+                        <li><a href="/user/new"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
+                        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
