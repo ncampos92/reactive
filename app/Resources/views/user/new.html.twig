@@ -1,16 +1,30 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+{% endblock %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
 {% block body %}
-    <h1>User creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="center form-border">
+            <h1>Sign up</h1>
+            {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_errors(form.email) }}
+                    {{ form_label(form.email) }}</br>
+                    {{ form_widget(form.email, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.password) }}
+                    {{ form_label(form.password) }}</br>
+                    {{ form_widget(form.password, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <input class="btn btn-primary" type="submit" value="Sign Up" />
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
