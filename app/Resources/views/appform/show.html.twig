@@ -55,6 +55,9 @@
                 <a class="btn btn-default" href="{{ path('appform_index') }}">Ver Formularios</a>
             </li>
             <li>
+                <a class="btn btn-primary" href="{{ path('appform_formanswer_new', { 'appform_id': appForm.id }) }}">Responder</a>
+            </li>
+            <li>
                 <a class="btn btn-success" href="{{ path('appform_edit', { 'id': appForm.id }) }}">Editar</a>
             </li>
             <li>

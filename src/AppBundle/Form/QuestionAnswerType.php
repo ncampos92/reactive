@@ -15,12 +15,16 @@ class QuestionAnswerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('value', ChoiceType::class, array(
+            'label' => false,
             'choices' => array(
                 'Cumple' => 'cu',
                 'No Cumple' => 'nc',
                 'No Aplica' => 'na'
             ),
             'choices_as_values' => true,
+            'choice_label' => function ($value, $key, $index) {
+                return false;
+            },
             'expanded' => true,
             'multiple' => false,
         ));

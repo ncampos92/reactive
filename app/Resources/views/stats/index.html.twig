@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/appFormStyles.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="center">
+            <h1>Formularios</h1>
+            <a class="btn btn-default" href="{{ path('appform_new') }}"><span class="glyphicon glyphicon-plus"></span> Nuevo Formulario</a>
+        </div>
+
+        <div class="forms">
+            <table class="table-striped custom-table">
+                <col width="90%"/>
+                <col width="10%"/>
+                <tbody>
+                {% for appForm in appForms %}
+                    <tr>
+                        <td>
+                            <h4>{{ appForm.title }}</h4>
+                            <h6>{{ appForm.description }}</h6>
+                        </td>
+                        <td class="actions">
+                            <ul>
+                                <li>
+                                    <a class="btn btn-primary" href="{{ path('stats_show', { 'id': appForm.id }) }}"><span class="glyphicon glyphicon-equalizer"></span></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

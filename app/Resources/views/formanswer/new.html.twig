@@ -1,16 +1,56 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/formAnswerStyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/appFormStyles.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Formanswer creation</h1>
+    <div class="container-fluid">
+        <div class="center">
+            <h2>Responder Formulario: {{ formAnswer.appForm.title }}</h2>
+            <h4>{{ formAnswer.appForm.description }}
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('appform_formanswer_index', { 'appform_id': appform_id }) }}">Back to the list</a>
-        </li>
-    </ul>
+        <div class="answer-form">
+            {{ form_start(form) }}
+                <table class="table-bordered custom-table">
+                    <col width="79%"/>
+                    <col width="7%"/>
+                    <col width="7%"/>
+                    <col width="7%"/>
+                    <thead>
+                        <th class="header">Preguntas</th>
+                        <th class="header">Cumple</th>
+                        <th class="header">No Cumple</th>
+                        <th class="header">No Aplica</th>
+                    </thead>
+                    <tbody>
+                        {% for questionAnswer in form.questionanswers %}
+                            <tr>
+                                <td>
+                                    {{ questionAnswer.vars.value.question.text }}
+                                </td>
+                                <td class="centered-cell">
+                                    {{ form_widget(questionAnswer.value[0]) }}
+                                </td>
+                                <td class="centered-cell">
+                                    {{ form_widget(questionAnswer.value[1]) }}
+                                </td>
+                                <td class="centered-cell">
+                                    {{ form_widget(questionAnswer.value[2]) }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="answer-actions-wrapper ">
+                    <div class="form-actions">
+                        <input class="btn btn-primary" type="submit" value="Guardar Respuesta" />
+                        <a class="btn btn-default" href="{{ path('appform_formanswer_index', { 'appform_id': appform_id }) }}">Volver a Formularios</a>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
