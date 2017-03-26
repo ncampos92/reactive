@@ -15,9 +15,14 @@
                     {{ form_widget(form.email, { 'attr': { 'class': 'form-control' } }) }}
                 </div>
                 <div class="form-group">
-                    {{ form_errors(form.password) }}
-                    {{ form_label(form.password) }}</br>
-                    {{ form_widget(form.password, { 'attr': { 'class': 'form-control' } }) }}
+                    {{ form_errors(form.password.first) }}
+                    {{ form_label(form.password.first) }}</br>
+                    {{ form_widget(form.password.first, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.password.second) }}
+                    {{ form_label(form.password.second) }}</br>
+                    {{ form_widget(form.password.second, { 'attr': { 'class': 'form-control' } }) }}
                 </div>
                 <input class="btn btn-primary" type="submit" value="Registrarse" />
             {{ form_end(form) }}

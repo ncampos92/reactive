@@ -28,7 +28,14 @@
                         {% for question in appForm.questions %}
                             <tr>
                                 <td class="centered-cell">{{ count }}</td>
-                                <td>{{ question.text }}</td>
+                                <td>
+                                    {{ question.text }}
+                                    <form>
+                                    {{ form_start(delete_forms[question.id]) }}
+                                        <input class="btn btn-danger" type="submit" value="Eliminar">
+                                    {{ form_end(delete_forms[question.id]) }}
+                                    </from>
+                                </td>
                             </tr>
                             {% set count=count+1 %}
                         {% endfor %}
