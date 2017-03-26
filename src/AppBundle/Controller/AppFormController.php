@@ -109,7 +109,7 @@ class AppFormController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('appform_edit', array('id' => $appForm->getId()));
+            return $this->redirectToRoute('appform_index');
         }
 
         return $this->render('appform/edit.html.twig', array(
