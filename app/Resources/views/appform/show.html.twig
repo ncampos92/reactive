@@ -24,6 +24,7 @@
                     <th class="header">No Cumple</th>
                     <th class="header">No Aplica</th>
                 </tr>
+
                 {% for question in appForm.questions %}
                     <tr>
                         <td>{{ question.text }}</td>
@@ -39,6 +40,12 @@
                     </tr>
                 {% endfor %}
             </table>
+        </div>
+        <div class="new-question">
+            {{ form_start(form, { 'attr': { 'action': path('appform_question_new', { 'appform_id': appForm.id }) } }) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Create" />
+            {{ form_end(form) }}
         </div>
         <ul>
             <li>

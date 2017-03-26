@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Question;
 use AppBundle\Entity\AppForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -66,13 +67,30 @@ class AppFormController extends Controller
      * @Route("/{id}", name="appform_show")
      * @Method("GET")
      */
-    public function showAction(AppForm $appForm)
+    public function showAction(Request $request, AppForm $appForm)
     {
+        $question = new Question();
+        $form = $this->createForm('AppBundle\Form\QuestionType', $question);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $appForm = $em->getRepository('AppBundle:AppForm')->find($appform_id);
+            $question->setAppForm($appForm);
+
+            $em->persist($question);
+            $em->flush();
+
+            return $this->redirectToRoute('appform_show', array('id' => $appform_id));
+        }
+
         $deleteForm = $this->createDeleteForm($appForm);
 
         return $this->render('appform/show.html.twig', array(
             'appForm' => $appForm,
             'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView(),
         ));
     }
 

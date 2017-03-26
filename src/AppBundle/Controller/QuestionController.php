@@ -54,7 +54,7 @@ class QuestionController extends Controller
             $em->persist($question);
             $em->flush();
 
-            return $this->redirectToRoute('appform_question_index', array('appform_id' => $appform_id));
+            return $this->redirectToRoute('appform_show', array('id' => $appform_id));
         }
 
         return $this->render('question/new.html.twig', array(
