@@ -1,17 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-{% endblock %}
-
 {% block title %}
-Sign Up
+    Registrarse
 {% endblock %}
 
 {% block body %}
     <div class="container-fluid">
         <div class="center form-border">
-            <h1>Sign up</h1>
+            <h1>Registrarse</h1>
             {{ form_start(form) }}
                 <div class="form-group">
                     {{ form_errors(form.email) }}
@@ -23,7 +19,7 @@ Sign Up
                     {{ form_label(form.password) }}</br>
                     {{ form_widget(form.password, { 'attr': { 'class': 'form-control' } }) }}
                 </div>
-                <input class="btn btn-primary" type="submit" value="Sign Up" />
+                <input class="btn btn-primary" type="submit" value="Registrarse" />
             {{ form_end(form) }}
         </div>
     </div>
