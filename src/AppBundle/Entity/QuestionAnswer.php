@@ -5,14 +5,22 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="questionanswer")
+ * @ORM\Table(name="questionanswer", uniqueConstraints={@ORM\UniqueConstraint(name="unique_answer", columns={"question_id", "form_answer_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\QuestionAnswerRepository")
  */
 class QuestionAnswer
 {
     /**
-     * Many question answers have one question
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * Many question answers have one question
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="questionAnswers")
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
@@ -20,7 +28,6 @@ class QuestionAnswer
 
     /**
      * Many questions answers relate to one form answer
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="FormAnswer", inversedBy="questionAnswers")
      * @ORM\JoinColumn(name="form_answer_id", referencedColumnName="id")
      */
@@ -103,5 +110,15 @@ class QuestionAnswer
     public function getFormAnswer()
     {
         return $this->formAnswer;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

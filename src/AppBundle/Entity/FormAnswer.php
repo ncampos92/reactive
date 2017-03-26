@@ -35,7 +35,7 @@ class FormAnswer
 
     /**
      * One form answer has many question answers
-     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="formAnswer", cascade="remove")
+     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="formAnswer", cascade={"persist", "remove"})
      */
     private $questionAnswers;
     /**

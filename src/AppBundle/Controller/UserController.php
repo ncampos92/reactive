@@ -36,7 +36,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('form_index');
+            return $this->redirectToRoute('appform_index');
         }
 
         return $this->render('user/new.html.twig', array(
