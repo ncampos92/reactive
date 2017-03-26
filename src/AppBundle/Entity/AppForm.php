@@ -42,7 +42,7 @@ class AppForm
 
     /**
      * One form has many questions
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="appForm", cascade="remove")
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="appForm", orphanRemoval=true, cascade="remove")
      */
     private $questions;
 

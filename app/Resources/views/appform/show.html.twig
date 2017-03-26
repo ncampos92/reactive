@@ -14,52 +14,52 @@
         <div class="questions">
 
             <table class="table-bordered custom-table">
-                <col width="79%">
-                <col width="7%">
-                <col width="7%">
-                <col width="7%">
+                <col width="5%"/>
+                <col width="95%"/>
                 <thead>
                     <tr>
-                        <th class="header">Pregunta</th>
-                        <th class="header">Cumple</th>
-                        <th class="header">No Cumple</th>
-                        <th class="header">No Aplica</th>
+                        <th class="header">N°</th>
+                        <th class="header">Preguntas</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for question in appForm.questions %}
-                        <tr>
-                            <td>{{ question.text }}</td>
-                            <td class="answer">
-                                <input type="radio" name="question_{{ question.id }}" value="cumple"/>
-                            </td>
-                            <td class="answer">
-                                <input type="radio" name="question_{{ question.id }}" value="no_cumple"/>
-                            </td>
-                            <td class="answer">
-                                <input type="radio" name="question_{{ question.id }}" value="no_alpica"/>
-                            </td>
-                        </tr>
-                    {% endfor %}
+                    <form>
+                        {% set count=1 %}
+                        {% for question in appForm.questions %}
+                            <tr>
+                                <td class="centered-cell">{{ count }}</td>
+                                <td>{{ question.text }}</td>
+                            </tr>
+                            {% set count=count+1 %}
+                        {% endfor %}
+                    </form>
                 </tbody>
             </table>
         </div>
-        <div class="new-question">
+        <div class="new-question-wrapper">
+            <h4>Nueva Pregunta</h4>
             {{ form_start(form, { 'attr': { 'action': path('appform_question_new', { 'appform_id': appForm.id }) } }) }}
-                {{ form_widget(form.text, { 'attr': { 'class': 'form-control', 'placeholder': 'agregar pregunta...' } } ) }}
-                <input type="submit" value="Create" />
+                <div class="form-group new-question-form">
+                    <div class="new-question-item">
+                        {{ form_widget(form.text, { 'attr': { 'rows': 1, 'placeholder': 'agregar pregunta...' } } ) }}
+                    </div>
+                    <div class="new-question-item">
+                        <button class="btn btn-success" type="submit" value="Create" ><span class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                </div>
             {{ form_end(form) }}
         </div>
-        <ul>
+
+        <ul class="form-actions">
             <li>
-                <a href="{{ path('appform_index') }}">Back to the list</a>
+                <a class="btn btn-default" href="{{ path('appform_index') }}">Ver Formularios</a>
             </li>
             <li>
-                <a href="{{ path('appform_edit', { 'id': appForm.id }) }}">Edit</a>
+                <a class="btn btn-success" href="{{ path('appform_edit', { 'id': appForm.id }) }}">Editar</a>
             </li>
             <li>
                 {{ form_start(delete_form) }}
-                    <input type="submit" value="Delete">
+                    <input class="btn btn-danger" type="submit" value="Eliminar">
                 {{ form_end(delete_form) }}
             </li>
         </ul>

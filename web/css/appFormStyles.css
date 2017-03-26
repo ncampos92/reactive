@@ -14,10 +14,35 @@
     vertical-align: middle;
 }
 
+#appbundle_question_text {
+    width: 100%;
+}
+
+.centered-cell {
+    text-align: center;
+    vertical-align: middle;
+}
+
 .custom-table {
     word-wrap: break-word;
     table-layout:fixed;
     width: 100%;
+}
+
+.form-actions {
+    width: 35%;
+    margin: 0 auto;
+    list-style-type: none;
+}
+
+.form-actions form {
+    display: inline;
+}
+
+.form-actions li {
+    display: inline;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .forms {
@@ -27,6 +52,25 @@
 .header {
     text-align: center;
     vertical-align: middle;
+}
+
+.new-question-form{
+    display: table;
+    width: 80%;
+}
+
+.new-question-item {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.new-question-item button {
+    height: 34px;
+    margin-left: 10px;
+}
+
+.new-question-item textarea {
+    height: 34px;
 }
 
 .questions {
