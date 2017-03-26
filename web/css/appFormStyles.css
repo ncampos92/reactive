@@ -1,0 +1,24 @@
+.answer {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.custom-table {
+    word-wrap: break-word;
+    table-layout:fixed;
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.questions {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+td {
+    vertical-align: middle;
+}

@@ -1,36 +1,57 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/appFormStyles.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Appform</h1>
+    <div class="container-fluid">
+        <div class="center">
+            <h1>{{ appForm.title }}</h1>
+            <h6>{{ appForm.description }}</h6>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ appForm.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ appForm.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ appForm.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="questions">
 
-    <ul>
-        <li>
-            <a href="{{ path('appform_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('appform_edit', { 'id': appForm.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <table class="table-bordered custom-table">
+                <col width="79%">
+                <col width="7%">
+                <col width="7%">
+                <col width="7%">
+                <tr>
+                    <th class="header">Pregunta</th>
+                    <th class="header">Cumple</th>
+                    <th class="header">No Cumple</th>
+                    <th class="header">No Aplica</th>
+                </tr>
+                {% for question in appForm.questions %}
+                    <tr>
+                        <td>{{ question.text }}</td>
+                        <td class="answer">
+                            <input type="radio" name="question_{{ question.id }}" value="cumple"/>
+                        </td>
+                        <td class="answer">
+                            <input type="radio" name="question_{{ question.id }}" value="no_cumple"/>
+                        </td>
+                        <td class="answer">
+                            <input type="radio" name="question_{{ question.id }}" value="no_alpica"/>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <ul>
+            <li>
+                <a href="{{ path('appform_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('appform_edit', { 'id': appForm.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
 {% endblock %}
