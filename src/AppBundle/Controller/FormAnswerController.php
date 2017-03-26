@@ -63,7 +63,7 @@ class FormAnswerController extends Controller
             $em->persist($formAnswer);
             $em->flush($formAnswer);
 
-            return $this->redirectToRoute('appform_formanswer_show', array('id' => $formAnswer->getId(), 'appform_id' => $appform_id));
+            return $this->redirectToRoute('appform_index');
         }
 
         return $this->render('formanswer/new.html.twig', array(
