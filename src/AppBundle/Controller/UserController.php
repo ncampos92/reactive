@@ -103,7 +103,7 @@ class UserController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('home');
     }
 
     /**

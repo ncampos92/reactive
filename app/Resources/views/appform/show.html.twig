@@ -43,7 +43,7 @@
         </div>
         <div class="new-question">
             {{ form_start(form, { 'attr': { 'action': path('appform_question_new', { 'appform_id': appForm.id }) } }) }}
-                {{ form_widget(form) }}
+                {{ form_widget(form.text, { 'attr': { 'class': 'form-control', 'placeholder': 'agregar pregunta...' } } ) }}
                 <input type="submit" value="Create" />
             {{ form_end(form) }}
         </div>
