@@ -15,23 +15,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class UserController extends Controller
 {
     /**
-     * Lists all user entities.
-     *
-     * @Route("/", name="user_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $users = $em->getRepository('AppBundle:User')->findAll();
-
-        return $this->render('user/index.html.twig', array(
-            'users' => $users,
-        ));
-    }
-
-    /**
      * Creates a new user entity.
      *
      * @Route("/new", name="user_new")

@@ -14,6 +14,11 @@ class SecurityController extends Controller
    */
   public function loginAction(Request $request)
   {
+    //redirect if user is already logged in
+    if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        return $this->redirectToRoute('appform_index');
+    }
+
     $authenticationUtils = $this->get('security.authentication_utils');
 
     // get the login error if there is one

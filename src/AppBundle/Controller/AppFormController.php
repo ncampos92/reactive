@@ -44,9 +44,9 @@ class AppFormController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $user = $this->getUser();
             $appForm->setCreatedBy($user);
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($appForm);
             $em->flush();
