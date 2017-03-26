@@ -35,7 +35,7 @@ class Question
 
     /**
      * One question has many answers
-     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="QuestionAnswer", mappedBy="question", cascade="remove")
      */
     private $questionAnswers;
 

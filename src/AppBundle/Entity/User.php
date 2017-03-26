@@ -38,13 +38,13 @@ class User implements UserInterface, \Serializable
 
     /**
      * One user creates many forms
-     * @ORM\OneToMany(targetEntity="AppForm", mappedBy="createdBy")
+     * @ORM\OneToMany(targetEntity="AppForm", mappedBy="createdBy", cascade="remove")
      */
     private $appForms;
 
     /**
      * One user has many form answers
-     * @ORM\OneToMany(targetEntity="FormAnswer", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="FormAnswer", mappedBy="user", cascade="remove")
      */
     private $formAnswers;
 

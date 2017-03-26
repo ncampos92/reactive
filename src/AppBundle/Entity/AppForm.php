@@ -42,13 +42,13 @@ class AppForm
 
     /**
      * One form has many questions
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="appForm")
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="appForm", cascade="remove")
      */
     private $questions;
 
     /**
      * One form has many form answers
-     * @ORM\OneToMany(targetEntity="FormAnswer", mappedBy="appForm")
+     * @ORM\OneToMany(targetEntity="FormAnswer", mappedBy="appForm", cascade="remove")
      */
     private $formAnswers;
     /**
