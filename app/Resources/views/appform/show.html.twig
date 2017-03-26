@@ -15,11 +15,13 @@
 
             <table class="table-bordered custom-table">
                 <col width="5%"/>
-                <col width="95%"/>
+                <col width="90%"/>
+                <col width="5%"/>
                 <thead>
                     <tr>
                         <th class="header">N°</th>
                         <th class="header">Preguntas</th>
+                        <th class="header">Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,13 +30,9 @@
                         {% for question in appForm.questions %}
                             <tr>
                                 <td class="centered-cell">{{ count }}</td>
-                                <td>
-                                    {{ question.text }}
-                                    <form>
-                                    {{ form_start(delete_forms[question.id]) }}
-                                        <input class="btn btn-danger" type="submit" value="Eliminar">
-                                    {{ form_end(delete_forms[question.id]) }}
-                                    </from>
+                                <td>{{ question.text }}</td>
+                                <td class="centered-cell">
+                                    <a href="{{ path('appform_question_edit', { 'id': question.id, 'appform_id': appForm.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
                                 </td>
                             </tr>
                             {% set count=count+1 %}

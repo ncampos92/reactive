@@ -73,13 +73,6 @@ class AppFormController extends Controller
         $form = $this->createForm('AppBundle\Form\QuestionType', $question);
         $form->handleRequest($request);
 
-        $questions = $appForm->getQuestions();
-        $deleteForms = array();
-
-        foreach ($questions as $question) {
-            $deleteForms[$question->getId()] = $this->createQuestionDeleteForm($question)->createView();
-        }
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
@@ -98,7 +91,6 @@ class AppFormController extends Controller
             'appForm' => $appForm,
             'delete_form' => $deleteForm->createView(),
             'form' => $form->createView(),
-            'delete_forms' => $deleteForms,
         ));
     }
 
@@ -158,25 +150,6 @@ class AppFormController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('appform_delete', array('id' => $appForm->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
-
-    /**
-     * Creates a form to delete a question entity.
-     *
-     * @param Question $question The question entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createQuestionDeleteForm(Question $question)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('appform_question_delete', array(
-                                                'id' => $question->getId(),
-                                                'appform_id' => $question->getAppForm()->getId(),
-                                            )))
             ->setMethod('DELETE')
             ->getForm()
         ;

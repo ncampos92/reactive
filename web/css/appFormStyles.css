@@ -30,6 +30,10 @@
     width: 100%;
 }
 
+.edit-question {
+    margin-left: 90%;
+}
+
 .form-actions {
     width: 35%;
     margin: 0 auto;

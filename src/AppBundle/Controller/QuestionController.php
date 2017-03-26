@@ -79,9 +79,8 @@ class QuestionController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('appform_question_edit', array(
-                                                'id' => $question->getId(),
-                                                'appform_id' => $appform_id
+            return $this->redirectToRoute('appform_show', array(
+                                                'id' => $appform_id,
                                             ));
         }
 
@@ -110,7 +109,7 @@ class QuestionController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('appform_question_index', array('appform_id' => $question->getAppForm()->getId(), ));
+        return $this->redirectToRoute('appform_show', array('id' => $question->getAppForm()->getId(), ));
     }
 
     /**
