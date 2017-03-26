@@ -18,27 +18,30 @@
                 <col width="7%">
                 <col width="7%">
                 <col width="7%">
-                <tr>
-                    <th class="header">Pregunta</th>
-                    <th class="header">Cumple</th>
-                    <th class="header">No Cumple</th>
-                    <th class="header">No Aplica</th>
-                </tr>
-
-                {% for question in appForm.questions %}
+                <thead>
                     <tr>
-                        <td>{{ question.text }}</td>
-                        <td class="answer">
-                            <input type="radio" name="question_{{ question.id }}" value="cumple"/>
-                        </td>
-                        <td class="answer">
-                            <input type="radio" name="question_{{ question.id }}" value="no_cumple"/>
-                        </td>
-                        <td class="answer">
-                            <input type="radio" name="question_{{ question.id }}" value="no_alpica"/>
-                        </td>
+                        <th class="header">Pregunta</th>
+                        <th class="header">Cumple</th>
+                        <th class="header">No Cumple</th>
+                        <th class="header">No Aplica</th>
                     </tr>
-                {% endfor %}
+                </thead>
+                <tbody>
+                    {% for question in appForm.questions %}
+                        <tr>
+                            <td>{{ question.text }}</td>
+                            <td class="answer">
+                                <input type="radio" name="question_{{ question.id }}" value="cumple"/>
+                            </td>
+                            <td class="answer">
+                                <input type="radio" name="question_{{ question.id }}" value="no_cumple"/>
+                            </td>
+                            <td class="answer">
+                                <input type="radio" name="question_{{ question.id }}" value="no_alpica"/>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
         <div class="new-question">
