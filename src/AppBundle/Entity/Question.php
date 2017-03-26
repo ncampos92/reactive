@@ -138,4 +138,22 @@ class Question
     {
         return $this->appForm;
     }
+
+    /**
+     * Get answers which value is type
+     *
+     * @param string $type
+     *
+     * @return integer
+     */
+    public function getQuestionAnswerCount($type)
+    {
+        $count = 0;
+        foreach ($this->getQuestionAnswers() as $questionAnswer) {
+            if ($questionAnswer->getValue() == $type) {
+                $count++;
+            }
+        }
+        return $count;
+    }
 }

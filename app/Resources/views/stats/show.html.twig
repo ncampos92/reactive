@@ -5,10 +5,52 @@
 {% block body %}
   <div class="container-fluid">
     <div class="row">
+      <div class="center">
+        <h2>Formulario: {{ appForm.title }}</h2>
+        <h6>Total Respuestas: {{ appForm.formAnswers.count }}</h6>
+      </div>
+    </div>
+    <div class="row">
       <div id="piechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
     </div>
     <div class="row">
-      Preguntas
+      <div class="center">
+        <h3>Preguntas</h3>
+      </div>
+      <div class="questions">
+
+              <table class="table-bordered custom-table">
+                  <col width="5%"/>
+                  <col width="80%"/>
+                  <col width="5%"/>
+                  <col width="5%"/>
+                  <col width="5%"/>
+                  <thead>
+                      <tr>
+                          <th class="header">N°</th>
+                          <th class="header">Preguntas</th>
+                          <th class="header">Cumple</th>
+                          <th class="header">No Cumple</th>
+                          <th class="header">No Aplica</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <form>
+                          {% set count=1 %}
+                          {% for question in appForm.questions %}
+                              <tr>
+                                  <td class="centered-cell">{{ count }}</td>
+                                  <td>{{ question.text }}</td>
+                                  <td>{{ question.getQuestionAnswerCount('cu') }}</td>
+                                  <td>{{ question.getQuestionAnswerCount('nc') }}</td>
+                                  <td>{{ question.getQuestionAnswerCount('na') }}</td>
+                              </tr>
+                              {% set count=count+1 %}
+                          {% endfor %}
+                      </form>
+                  </tbody>
+              </table>
+          </div>
     </div>
   </div>
 {% endblock %}
