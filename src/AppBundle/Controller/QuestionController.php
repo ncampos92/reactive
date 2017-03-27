@@ -16,28 +16,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class QuestionController extends Controller
 {
     /**
-     * Lists all question entities.
-     *
-     * @Route("/", name="appform_question_index")
-     * @Method("GET")
-     */
-    public function indexAction($appform_id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $questions = $em->getRepository('AppBundle:Question')->findBy(array('appForm' => $appform_id));
-
-        return $this->render('question/index.html.twig', array(
-            'questions' => $questions,
-            'appform_id' => $appform_id,
-        ));
-    }
-
-    /**
      * Creates a new question entity.
      *
      * @Route("/new", name="appform_question_new")
-     * @Method({"GET", "POST"})
+     * @Method({"POST"})
      */
     public function newAction(Request $request, $appform_id)
     {
@@ -53,15 +35,9 @@ class QuestionController extends Controller
 
             $em->persist($question);
             $em->flush();
-
-            return $this->redirectToRoute('appform_show', array('id' => $appform_id));
         }
 
-        return $this->render('question/new.html.twig', array(
-            'question' => $question,
-            'form' => $form->createView(),
-            'appform_id' => $appform_id,
-        ));
+        return $this->redirectToRoute('appform_show', array('id' => $appform_id));
     }
 
     /**

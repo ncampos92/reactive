@@ -22,7 +22,7 @@
                 {% endif %}
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("ROLE_USER") %}
-                        <li><a href="{{ path('user_show', { 'id': app.user.id }) }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
+                        <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</p></li>
                         <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesión</a></li>
                     {% else %}
                         <li><a href="/user/new"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
